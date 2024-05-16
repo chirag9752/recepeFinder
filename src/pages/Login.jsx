@@ -14,7 +14,7 @@ const Login = ({setisLogin}) => {
   const Handlerfunction = (event) => {
        setformData( (prevData) => ({
           ...prevData ,
-        [event.target.name] : [event.target.value]
+        [event.target.name] : event.target.value
         
       }))
   }

@@ -8,6 +8,9 @@ exports.signUp = async(req , res) => {
     try{
         const {firstname , lastname , email , password } = req.body;
         console.log(firstname);
+        console.log(lastname);
+        console.log(email);
+        console.log(password);
 
         const existingUser = await user.findOne({email});
 
@@ -20,6 +23,7 @@ exports.signUp = async(req , res) => {
         }
 
         let hashPassword;
+
         try{
             hashPassword = await bcrypt.hash(password , 10);        // 10 is no of salt rounds
         }catch(error)
@@ -32,23 +36,11 @@ exports.signUp = async(req , res) => {
         // create entry in db
         await user.create(
         {firstname ,lastname , email , password : hashPassword});
-        
-        const payload ={
-            email ,
-            firstname,
-            lastname,
-            number, 
-            password
-        }
-        let token = jwt.sign(payload , process.env.JWT_SECRET , {
-            expiresIn : "2h"
-        })
 
 
     return res.status(200).json({
         success : true,
         message : "successfully created entry in db",
-        token
     })
         
     }catch(error)
@@ -61,12 +53,12 @@ exports.signUp = async(req , res) => {
     }
 }
 
-
-
 exports.login = async(req , res) => {
     try{
 
         const {email , password} = req.body;
+        console.log(email);
+        console.log(password);
 
         if(!email || !password)
         {
@@ -95,7 +87,7 @@ exports.login = async(req , res) => {
             role : existingUser.role,
         }
 
-        if(await bcrypt.compare(password , existingUser.password)) {
+        if(await bcrypt.compare(password , existingUser.password.toString())) {
             
               let token = jwt.sign(payload , process.env.JWT_SECRET , {
                 expiresIn : "2h"
