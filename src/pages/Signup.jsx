@@ -1,7 +1,7 @@
 import axios from 'axios';
 import React, { useState } from 'react'
 import toast from 'react-hot-toast';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 const Signup = ({setisLogin}) => {
       const navigate = useNavigate();
@@ -28,20 +28,28 @@ const Signup = ({setisLogin}) => {
       }
           axios.post("http://localhost:4000/signUp" , formData).then((res => {
 
-            if(res.data.status === 200)
+            if(res.status === 200)
             {
                   toast.success("successfully signup");
                   setisLogin(true);
-                  navigate("/receipepoint");
+                  navigate("/searchpage");
                   setformData({
-                        firstname : "" , lastname : "" , email : "" , password : "" , confirmpassword : ""
+                        firstname : "" ,
+                        lastname : "" ,
+                        email : "" ,
+                        password : "" ,
+                        confirmpassword : ""
                   })
-            }else
+            }else if(res.status === 400)
             {
                toast.error("user already registered please login");
                navigate("/login");
                setformData({
-                  firstname : "" , lastname : "" , email : "", password : "" , confirmpassword : ""
+                  firstname : "" ,
+                  lastname : "" ,
+                  email : "" ,
+                  password : "" ,
+                  confirmpassword : ""
             })
       }
 
@@ -56,30 +64,32 @@ const Signup = ({setisLogin}) => {
              
                <img className=' w-screen h-screen' src="https://t4.ftcdn.net/jpg/01/80/26/03/360_F_180260315_gREfK8CvdnJN7mrUcopHsYvOdJs5qh0N.jpg" alt="" />
               
-               <form onSubmit={signupHandler} className='absolute top-40 rounded-lg p-2 left-40 ouline gap-y-2  bg-white flex flex-col w-[25%] mx-auto  my-auto'>
+               <form onSubmit={signupHandler} className='absolute  top-40 rounded-lg p-3 left-40 ouline gap-y-6 bg-slate-300 flex flex-col w-[40%] mx-auto  my-auto'>
                    
-                   <div className='mt-3 flex flex-row gap-5 min-w-full'>
+                   <h1 className='font-bold text-2xl flex justify-center' >Signup</h1>
+                   
+                   <div className='mt-3 flex flex-row gap-5  min-w-full'>
                        
-                       <input className='block w-[50%] rounded-md border-0 py-1.5 text-gray-900
+                       <input className='block h-12 w-[50%] outline-none rounded-md border-0 py-1.5 text-gray-900
                         shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6'
                         type='text' 
-                        placeholder=' firstname'
+                        placeholder='  firstname'
                         name='firstname'
                         value={formData.firstname}
                         onChange={changeHandler}
                         />
                       
-                       <input className='block w-[50%] rounded-md border-0 py-1.5 text-gray-900
+                       <input className='block h-12 w-[50%] outline-none rounded-md border-0 py-1.5 text-gray-900
                         shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 '
                          type='text' 
-                         placeholder=' lastname'
+                         placeholder='  lastname'
                          name='lastname'
                          value={formData.lastname}
                          onChange={changeHandler}
                          />
                    </div>
 
-                   <input className='block w-full rounded-md border-0 py-1.5 text-gray-900
+                   <input className='block w-full h-12 outline-none rounded-md border-0 py-1.5 text-gray-900
                         shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 '
                          type="email"
                          value={formData.email}
@@ -87,7 +97,7 @@ const Signup = ({setisLogin}) => {
                          placeholder =' Email'
                         onChange={changeHandler} />
         
-                  <input className='block w-full rounded-md border-0 py-1.5 text-gray-900
+                  <input className='block w-full h-12 outline-none rounded-md border-0 py-1.5 text-gray-900
                         shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 ' 
                         type="password" 
                         name='password'
@@ -95,7 +105,7 @@ const Signup = ({setisLogin}) => {
                         placeholder=' password'
                         onChange={changeHandler}/>
 
-                  <input className='block w-full rounded-md border-0 py-1.5 text-gray-900
+                  <input className='block w-full h-12 outline-none rounded-md border-0 py-1.5 text-gray-900
                         shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 ' 
                         type="password" 
                         name='confirmpassword'
@@ -103,7 +113,17 @@ const Signup = ({setisLogin}) => {
                         placeholder=' confirm password'
                         onChange={changeHandler}/>
                   
-                  <button className='p-2 hover:bg-slate-400 rounded-xl bg-green-500 mx-auto' >Signup</button>              
+                  <button className='p-2 hover:bg-slate-400 rounded-md w-full font-bold bg-green-400 mx-auto' >Signup</button>              
+                
+                  {/* <h1 className='flex justify-center gap-2'>Already register ?  <a href="/login" className='hover:underline text-blue-600'>  Login</a></h1> */}
+                   <h1 className='flex justify-center gap-2'>Already register ? 
+                    {
+                        <Link to= "/login" className='hover:underline text-blue-600'>
+                        Login
+                        </Link>
+                    }
+                   </h1>
+               
                 </form>
           </div>                    
     </div>                 

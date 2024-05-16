@@ -9,17 +9,25 @@ import { useState } from 'react';
 
 function App() {
 
-  const [isLogin , setisLogin] = useState("token");
+  const [isLogin , setisLogin] = useState(false);
   const navigate = useNavigate();
 
   return (
       <div>
             <Routes>
                  <Route path='/' element = {<Home/>} />
-                 <Route path='/login' element = {<Login setisLogin = {setisLogin}/>}/>
-                 <Route path='/signup' element =  {<Signup  setisLogin = {setisLogin}/>}/> 
-                 <Route path='/searchpage' element = {<SearchPage/>}/>
-                 <Route path='/receipepoint' element = {<Recipie/>} />
+
+                 {
+                    isLogin ? (
+                              <Route path='/searchpage' element = {<SearchPage setisLogin = {setisLogin}/>}/>
+                    ) : (
+                       <Route></Route>
+                    )
+                 }
+
+                    <Route path='/login' element = {<Login setisLogin = {setisLogin}/>}/>
+                    <Route path='/signup' element =  {<Signup  setisLogin = {setisLogin}/>}/> 
+                    <Route path='/receipepoint' element = {<Recipie/>} />
             </Routes>
       </div>
   );

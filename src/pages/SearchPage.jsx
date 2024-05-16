@@ -2,11 +2,19 @@ import React, { useEffect, useState } from 'react'
 import { IoMdSearch } from "react-icons/io"
 import { ImSpinner11 } from "react-icons/im";
 import Products from '../components/Products';
+import { useNavigate } from 'react-router-dom';
 
-const SearchPage = () => {
+const SearchPage = ({setisLogin}) => {
+
+    const navigate = useNavigate();
 
     const searchHandler = () => {
-           console.log("alkjlsdfh");
+        console.log("alkjlsdfh");
+    }
+
+    const logoutHandler = () => {
+        navigate("/");
+        setisLogin(false);
     }
 
     const [loading , setloading] = useState(false);
@@ -17,17 +25,11 @@ const SearchPage = () => {
         try {
             setloading(true);
             const response = await fetch("https://dummyjson.com/recipes")
-            // .then((res)=>res.json()).then((json)=>{
-            //     setdata(json.recipes);
-            //     console.log(json.recipes)
-            // })
-
 
             const jsondata = await response.json();
             setdata(jsondata.recipes);
             console.log('----data', data);
            
-
             // console.log("Data fetched successfully:", jsonData);
 
         } catch (error) {
@@ -56,14 +58,15 @@ const SearchPage = () => {
         {/* navigation bar completed */}
          <div className='w-screen h-screen'>
          
-              <nav className='h-20 bg-orange-300 w-screen'>
+              <nav className='h-20 bg-orange-300 w-screen flex-row justify-around'>
                 
                   <div className='relative pt-3 flex justify-between w-[40%] mx-auto'>
+
                       <input src='text' placeholder = '  search' 
-                      className='outline-none flex justify-between w-full font-serif items-center mx-auto h-12 rounded-full'
+                      className=' outline-none flex justify-between w-full font-serif items-center mx-auto h-12 rounded-full'
                       onChange={e => setsearchValue(e.target.value)}
                       />
-                      
+
                       <div className='flex justify-end'>
                         <div></div>
                       
@@ -71,8 +74,12 @@ const SearchPage = () => {
                           <IoMdSearch />
                          </div>
                       </div>
+
                       
                   </div>
+              
+                  <button className='text-black left-[90%] top-[3%] absolute bg-white rounded-md p-2' onClick={logoutHandler}>Signout</button>
+                 
               </nav>
 
           {/* Fetching data Page */}
@@ -83,7 +90,7 @@ const SearchPage = () => {
                     <ImSpinner11 />
                  </div> : 
                  (
-                     <div className='grid grid-cols-1 sm:p-2 md:grid-cols-2 lg:grid-cols-4 w-[98%] space-y-7 space-x-7 mx-auto'>
+                     <div className='grid grid-cols-1 sm:p-2 md:grid-cols-2 lg:grid-cols-4 w-[95%] space-y-7 space-x-7 mx-auto'>
                         {
                              handleSearch().map((items) => 
                             // console.log(items.id)

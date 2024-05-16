@@ -7,10 +7,6 @@ require("dotenv").config();
 exports.signUp = async(req , res) => {
     try{
         const {firstname , lastname , email , password } = req.body;
-        console.log(firstname);
-        console.log(lastname);
-        console.log(email);
-        console.log(password);
 
         const existingUser = await user.findOne({email});
 
@@ -57,8 +53,6 @@ exports.login = async(req , res) => {
     try{
 
         const {email , password} = req.body;
-        console.log(email);
-        console.log(password);
 
         if(!email || !password)
         {
@@ -69,14 +63,12 @@ exports.login = async(req , res) => {
         }
 
         let existingUser = await user.findOne({email});
-        console.log(existingUser);
 
-        if(!existingUser)
-        {
-            return res.status(500).json({
-                success : false,
-                message : "user can't be registered please login first"
-            })
+        if (!existingUser) {
+            return res.status(404).json({
+                success: false,
+                message: "User not found. Please register first."
+            });
         }
 
         // verify password and generate jwt token
@@ -111,14 +103,14 @@ exports.login = async(req , res) => {
             token,
             existingUser,
             message : 'user loggedin successfully'
-        });
+        })
 
         }
-        else{
-            return res.status(403).json({
-                success : false,
-                message : "Incorrect password"
-            })
+        else {
+            return res.status(401).json({
+                success: false,
+                message: "Incorrect email or password"
+            });
         }
     }catch(error)
     {

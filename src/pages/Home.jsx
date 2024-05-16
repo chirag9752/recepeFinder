@@ -18,7 +18,12 @@ const Home = () => {
 
   return (
         <div >
-            <div className=' w-screen h-screen' style={{backgroundImage: `url('https://img.freepik.com/free-photo/fresh-colourful-ingredients-mexican-cuisine_23-2148254294.jpg?w=1380&t=st=1715682720~exp=1715683320~hmac=7051ccb7d44b0e12152e72afc167a749c97dabe0953deca9db01fc782937efb7')`}}>
+            <div className=' w-screen h-screen bg-full'
+             style={{
+              backgroundImage: `url('https://img.freepik.com/free-photo/fresh-colourful-ingredients-mexican-cuisine_23-2148254294.jpg?w=1380&t=st=1715682720~exp=1715683320~hmac=7051ccb7d44b0e12152e72afc167a749c97dabe0953deca9db01fc782937efb7')`, 
+              backgroundSize: 'cover',
+              backgroundPosition: 'center',
+              }}>
                
                <div className='flex flex-col gap-5 w-[40%] p-3 pt-60'>
                     

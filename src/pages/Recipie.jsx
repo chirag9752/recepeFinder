@@ -6,17 +6,8 @@ const Recipie = () => {
   const data = location.state;
   const [datas,setDatas] = useState(data)
   
-  // setDatas(data)
-  // console.log('-----locaion',location.state)
-  // if (!datas || !datas.recipes || datas.recipes.length === 0) {
-  //   return <div>No recipe data found</div>;
-  // }
   console.log('----dasss',datas)
   
-  // console.log(data);
-  // const firstRecipe = data.recipes[0];
-  // console.log("dataa" , firstRecipe);
-
   return (
     <div>
           <div className='text-black relative flex w-screen h-screen  justify-center'> 

@@ -24,9 +24,8 @@ const Login = ({setisLogin}) => {
         event.preventDefault();
         axios.post("http://localhost:4000/login" , formData).then( (res) => {
         
-          console.log(res.data);
-
-        if(res.data.status === 200)
+          console.log(res.status);
+        if(res.status === 200)
         {
            toast.success("login successfully");
            localStorage.setItem("token" , res.data.token);
@@ -37,13 +36,18 @@ const Login = ({setisLogin}) => {
            setisLogin(true);
            setformData({ email : "" , password : ""});
         }
-        else{
-          toast.error("email and password are incorrect");
-        }
+        
        } 
       
-      ).catch((err) => {
-        console.log("error in login" , err.message);
+      ).catch((error) => {
+        if (error.response && error.response.status === 400) {
+          toast.error("Please fill all the details");
+        } else if (error.response && error.response.status === 404) {
+          toast.error("User not found. Please register first");
+          navigate("/signup");
+        } else {
+          console.log("error in login", error.message);
+        }
       } )
   }
 
@@ -51,11 +55,13 @@ const Login = ({setisLogin}) => {
     <div>
           <div className='relative w-screen h-screen'>
              
-               <img className=' w-screen h-screen' src="https://t4.ftcdn.net/jpg/01/80/26/03/360_F_180260315_gREfK8CvdnJN7mrUcopHsYvOdJs5qh0N.jpg" alt="" />
+               <img className=' w-screen h-screen opacity-2' src="https://t4.ftcdn.net/jpg/01/80/26/03/360_F_180260315_gREfK8CvdnJN7mrUcopHsYvOdJs5qh0N.jpg" alt="" />
               
-               <form onSubmit={loginHandler} className='absolute w-[20%] left-40 top-52 mx-auto flex flex-col'>
+               <form onSubmit={loginHandler} className='absolute  bg-slate-300 rounded-md outline-2 justify-center p-6 items-center w-[40%] left-40 top-52 mx-auto flex flex-col'>
+                  
+                  <h1 className='font-bold text-2xl mt-0 mb-5'>Login</h1>
 
-                  <input className='rounded-sm h-7' 
+                  <input className='rounded-md w-full h-12' 
                   type="email"
                    placeholder=' Enter your Email' 
                    onChange={Handlerfunction}
@@ -63,15 +69,15 @@ const Login = ({setisLogin}) => {
                    name = "email"
                    />
                   <br />
-                  <input className='rounded-sm h-7' 
+                  <input className='rounded-md w-full h-12' 
                   type="password" 
                   placeholder=' Enter your password'
                   onChange={Handlerfunction}
                   value={formData.password}
                   name='password'
                   />
-                  <button className='p-2 outline-lime-50 hover:bg-slate-400 rounded-xl bg-green-500 mx-auto mt-5' >Login</button>              
-                
+                  <button className=' mt-8 outline-lime-50 w-full h-12 font-bold hover:bg-slate-400 rounded-md bg-green-400 mx-auto ' >Login</button>              
+                   <p className='mt-4' >Dont't have an account ?<a href="/signup" className='text-blue-600 hover:underline'> signup</a> </p>
                 </form>
           </div>
     </div>
