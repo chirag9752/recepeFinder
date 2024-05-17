@@ -1,7 +1,7 @@
 import React from 'react'
 import {useNavigate } from 'react-router-dom'
 
-const Products = ({items}) => {
+const Products = ({items = items.id !== 1}) => {
 
   const navigate = useNavigate();
 

@@ -64,14 +64,14 @@ const Signup = ({setisLogin}) => {
              
                <img className=' w-screen h-screen' src="https://t4.ftcdn.net/jpg/01/80/26/03/360_F_180260315_gREfK8CvdnJN7mrUcopHsYvOdJs5qh0N.jpg" alt="" />
               
-               <form onSubmit={signupHandler} className='absolute  top-40 rounded-lg p-3 left-40 ouline gap-y-6 bg-slate-300 flex flex-col w-[40%] mx-auto  my-auto'>
+               <form onSubmit={signupHandler} className='absolute hover:shadow-2xl transition-all ease-linear top-40 rounded-lg p-3 left-40 ouline gap-y-6 bg-slate-300 flex flex-col w-[40%] mx-auto  my-auto'>
                    
                    <h1 className='font-bold text-2xl flex justify-center' >Signup</h1>
                    
                    <div className='mt-3 flex flex-row gap-5  min-w-full'>
                        
                        <input className='block h-12 w-[50%] outline-none rounded-md border-0 py-1.5 text-gray-900
-                        shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6'
+                        shadow-sm ring-1 ring-inset hover:shadow-xl transition-all ease-linear ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6'
                         type='text' 
                         placeholder='  firstname'
                         name='firstname'
@@ -80,7 +80,7 @@ const Signup = ({setisLogin}) => {
                         />
                       
                        <input className='block h-12 w-[50%] outline-none rounded-md border-0 py-1.5 text-gray-900
-                        shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 '
+                        shadow-sm ring-1 ring-inset hover:shadow-xl transition-all ease-linear ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 '
                          type='text' 
                          placeholder='  lastname'
                          name='lastname'
@@ -90,7 +90,7 @@ const Signup = ({setisLogin}) => {
                    </div>
 
                    <input className='block w-full h-12 outline-none rounded-md border-0 py-1.5 text-gray-900
-                        shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 '
+                        shadow-sm ring-1 ring-inset hover:shadow-xl transition-all ease-linear ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 '
                          type="email"
                          value={formData.email}
                          name='email'
@@ -98,7 +98,7 @@ const Signup = ({setisLogin}) => {
                         onChange={changeHandler} />
         
                   <input className='block w-full h-12 outline-none rounded-md border-0 py-1.5 text-gray-900
-                        shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 ' 
+                        shadow-sm ring-1 ring-inset hover:shadow-xl transition-all ease-linear ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 ' 
                         type="password" 
                         name='password'
                         value={formData.password}
@@ -106,14 +106,14 @@ const Signup = ({setisLogin}) => {
                         onChange={changeHandler}/>
 
                   <input className='block w-full h-12 outline-none rounded-md border-0 py-1.5 text-gray-900
-                        shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 ' 
+                        shadow-sm ring-1 ring-inset hover:shadow-xl transition-all ease-linear ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 ' 
                         type="password" 
                         name='confirmpassword'
                         value={formData.confirmpassword}
                         placeholder=' confirm password'
                         onChange={changeHandler}/>
                   
-                  <button className='p-2 hover:bg-slate-400 rounded-md w-full font-bold bg-green-400 mx-auto' >Signup</button>              
+                  <button className='p-2 hover:bg-slate-400 hover:shadow-xl transition-all ease-linear rounded-md w-full font-bold bg-green-400 mx-auto' >Signup</button>              
                 
                   {/* <h1 className='flex justify-center gap-2'>Already register ?  <a href="/login" className='hover:underline text-blue-600'>  Login</a></h1> */}
                    <h1 className='flex justify-center gap-2'>Already register ? 

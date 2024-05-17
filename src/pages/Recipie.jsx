@@ -6,7 +6,7 @@ const Recipie = () => {
   const data = location.state;
   const [datas,setDatas] = useState(data)
   
-  console.log('----dasss',datas)
+  console.log('----dasss',datas);
   
   return (
     <div>

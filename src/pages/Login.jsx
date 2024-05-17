@@ -45,8 +45,9 @@ const Login = ({setisLogin}) => {
         } else if (error.response && error.response.status === 404) {
           toast.error("User not found. Please register first");
           navigate("/signup");
-        } else {
-          console.log("error in login", error.message);
+        } else if(error.response && error.response.status === 401) {
+          toast.error("please check the password");
+          // console.log("please check the password", error.message);
         }
       } )
   }
@@ -57,11 +58,13 @@ const Login = ({setisLogin}) => {
              
                <img className=' w-screen h-screen opacity-2' src="https://t4.ftcdn.net/jpg/01/80/26/03/360_F_180260315_gREfK8CvdnJN7mrUcopHsYvOdJs5qh0N.jpg" alt="" />
               
-               <form onSubmit={loginHandler} className='absolute  bg-slate-300 rounded-md outline-2 justify-center p-6 items-center w-[40%] left-40 top-52 mx-auto flex flex-col'>
+               <form onSubmit={loginHandler} className='absolute hover:shadow-2xl transition-all ease-linear
+                bg-slate-300 rounded-md outline-2 justify-center p-6 items-center lg:w-[40%]
+                  md:w-[60%] left-[10%] sm:w-[80%] top-52 mx-auto flex flex-col'>
                   
                   <h1 className='font-bold text-2xl mt-0 mb-5'>Login</h1>
 
-                  <input className='rounded-md w-full h-12' 
+                  <input className='rounded-md hover:shadow-xl transition-all ease-linear w-full h-12' 
                   type="email"
                    placeholder=' Enter your Email' 
                    onChange={Handlerfunction}
@@ -69,14 +72,14 @@ const Login = ({setisLogin}) => {
                    name = "email"
                    />
                   <br />
-                  <input className='rounded-md w-full h-12' 
+                  <input className='rounded-md hover:shadow-xl transition-all ease-linear w-full h-12' 
                   type="password" 
                   placeholder=' Enter your password'
                   onChange={Handlerfunction}
                   value={formData.password}
                   name='password'
                   />
-                  <button className=' mt-8 outline-lime-50 w-full h-12 font-bold hover:bg-slate-400 rounded-md bg-green-400 mx-auto ' >Login</button>              
+                  <button className=' mt-8 outline-lime-50 w-full h-12 font-bold hover:bg-slate-400 transition-all ease-linear rounded-md bg-green-400 mx-auto ' >Login</button>              
                    <p className='mt-4' >Dont't have an account ?<a href="/signup" className='text-blue-600 hover:underline'> signup</a> </p>
                 </form>
           </div>

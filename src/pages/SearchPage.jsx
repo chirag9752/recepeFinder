@@ -3,6 +3,7 @@ import { IoMdSearch } from "react-icons/io"
 import { ImSpinner11 } from "react-icons/im";
 import Products from '../components/Products';
 import { useNavigate } from 'react-router-dom';
+import toast from 'react-hot-toast';
 
 const SearchPage = ({setisLogin}) => {
 
@@ -12,9 +13,11 @@ const SearchPage = ({setisLogin}) => {
         console.log("alkjlsdfh");
     }
 
-    const logoutHandler = () => {
-        navigate("/");
+    const logoutHandler = () => {    
+        toast.success("Logout successfully");
+        localStorage.removeItem("token");
         setisLogin(false);
+        navigate("/");
     }
 
     const [loading , setloading] = useState(false);
@@ -58,7 +61,7 @@ const SearchPage = ({setisLogin}) => {
         {/* navigation bar completed */}
          <div className='w-screen h-screen'>
          
-              <nav className='h-20 bg-orange-300 w-screen flex-row justify-around'>
+              <nav className='h-20 bg-orange-300  w-screen pr-0 flex-row justify-around'>
                 
                   <div className='relative pt-3 flex justify-between w-[40%] mx-auto'>
 
@@ -74,10 +77,7 @@ const SearchPage = ({setisLogin}) => {
                           <IoMdSearch />
                          </div>
                       </div>
-
-                      
                   </div>
-              
                   <button className='text-black left-[90%] top-[3%] absolute bg-white rounded-md p-2' onClick={logoutHandler}>Signout</button>
                  
               </nav>
