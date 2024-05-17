@@ -64,13 +64,18 @@ const Signup = ({setisLogin}) => {
              
                <img className=' w-screen h-screen' src="https://t4.ftcdn.net/jpg/01/80/26/03/360_F_180260315_gREfK8CvdnJN7mrUcopHsYvOdJs5qh0N.jpg" alt="" />
               
-               <form onSubmit={signupHandler} className='absolute hover:shadow-2xl transition-all ease-linear top-40 rounded-lg p-3 left-40 ouline gap-y-6 bg-slate-300 flex flex-col w-[40%] mx-auto  my-auto'>
+               <form onSubmit={signupHandler} className='absolute hover:shadow-2xl transition-all ease-linear
+                 rounded-lg  ouline gap-y-6 bg-slate-300 flex flex-col  my-auto
+            
+                justify-center p-6 items-center lg:w-[40%]
+                  md:w-[60%] left-[10%] sm:w-[80%] top-52 mx-auto
+                '>
                    
                    <h1 className='font-bold text-2xl flex justify-center' >Signup</h1>
                    
-                   <div className='mt-3 flex flex-row gap-5  min-w-full'>
+                   <div className='mt-3 lg:flex lg:flex-row md:flex sm:flex sm:flex-col md:flex-col gap-5 min-w-full'>
                        
-                       <input className='block h-12 w-[50%] outline-none rounded-md border-0 py-1.5 text-gray-900
+                       <input className='block h-12 lg:w-[50%] md:w-full sm:w-full outline-none rounded-md border-0 py-1.5 text-gray-900
                         shadow-sm ring-1 ring-inset hover:shadow-xl transition-all ease-linear ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6'
                         type='text' 
                         placeholder='  firstname'
@@ -79,7 +84,7 @@ const Signup = ({setisLogin}) => {
                         onChange={changeHandler}
                         />
                       
-                       <input className='block h-12 w-[50%] outline-none rounded-md border-0 py-1.5 text-gray-900
+                       <input className='block h-12 lg:w-[50%] md:w-full sm:w-full outline-none rounded-md border-0 py-1.5 text-gray-900
                         shadow-sm ring-1 ring-inset hover:shadow-xl transition-all ease-linear ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 '
                          type='text' 
                          placeholder='  lastname'

@@ -24,7 +24,6 @@ const Login = ({setisLogin}) => {
         event.preventDefault();
         axios.post("http://localhost:4000/login" , formData).then( (res) => {
         
-          console.log(res.status);
         if(res.status === 200)
         {
            toast.success("login successfully");
