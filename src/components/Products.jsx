@@ -6,7 +6,6 @@ const Products = ({items = items.id !== 1}) => {
   const navigate = useNavigate();
 
   const clickHandler = (items) => {
-    console.log('----',items);
 
       // const {instructions , ingredients} = items;
       navigate("/receipepoint",{state:items});
@@ -15,12 +14,12 @@ const Products = ({items = items.id !== 1}) => {
   return (
     <div>
          
-         <div className='hover:scale-110 transition-all ease-in-out p-2 outline-lime-50 shadow-md rounded-sm space-x-2'>
+         <div className='p-2 space-x-2 transition-all ease-in-out rounded-sm shadow-md hover:scale-110 outline-lime-50'>
            <div className=''>
                 <img onClick={()=>{clickHandler(items)}} src={items.image} className='rounded-lg' alt="images of food" />
             </div>
 
-            <div className='flex gap-2 justify-between p-2'>
+            <div className='flex justify-between gap-2 p-2'>
 
                <div className='text-green-700'>
                  rating : {items.rating}
@@ -32,7 +31,7 @@ const Products = ({items = items.id !== 1}) => {
                
             </div>
 
-            <div onClick={()=>{clickHandler(items)}} className='pl-1 cursor-pointer text-blue-600'>
+            <div onClick={()=>{clickHandler(items)}} className='pl-1 text-blue-600 cursor-pointer'>
                 click here to see full receipe
             </div>
          </div>
